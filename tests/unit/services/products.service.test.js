@@ -3,7 +3,7 @@ const sinon = require('sinon');
 const { productsService } = require('../../../src/services');
 const { productsModel } = require('../../../src/models');
 
-const { products } = require('../mocks/products.mock');
+const { products, newProduct } = require('../mocks/products.mock');
 
 describe('Testes de unidade da camada Service de products', function () {
   describe('Recuperando a lista com todos os produtos', function () {
@@ -43,6 +43,29 @@ describe('Testes de unidade da camada Service de products', function () {
       // assert
       expect(result.type).to.equal('INVALID_VALUE');
       expect(result.message).to.equal('"id" must be a number');
+    });
+  });
+
+  describe('Adicionando product com valores válidos', function () {
+    it('retorna o ID do product adicionado', async function () {
+      // arrange
+      sinon.stub(productsModel, 'addProduct').resolves(4)
+      sinon.stub(productsModel, 'listProductById').resolves(newProduct);
+      // act
+      const result = await productsService.addProduct(newProduct.name);
+      // assert
+      expect(result.type).to.be.equal(null);
+      expect(result.message).to.be.deep.equal(newProduct);
+    });
+  });
+
+  describe('Adicionando product com valores inválidos', function () {
+    it('retorna um erro ao passar um nome inválido', async function () {
+      // act
+      const result = await productsService.addProduct('');
+      // assert 
+      expect(result.type).to.be.equal('INVALID_VALUE');
+      expect(result.message).to.be.equal('"name" length must be at least 5 characters long');
     });
   });
   
