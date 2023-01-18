@@ -9,14 +9,7 @@ const validateId = (id) => {
 };
 
 const validateNewProduct = (productName) => {
-  if (!productName) {
-    return {
-      type: 'BAD_REQUEST',
-      message: '"name" is required',
-    };
-  }
-  
-  const { error } = nameSchema.valid(productName);
+  const { error } = nameSchema.validate({ name: productName });
   if (error) {
     return {
       type: 'INVALID_VALUE',

@@ -18,7 +18,6 @@ const listProductById = async (req, res) => {
 };
 
 const addProduct = async (req, res) => {
-  console.log('#######################################################:', req.body);
   const { name } = req.body;
 
   const { type, message } = await productsService.addProduct(name);
