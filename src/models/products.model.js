@@ -16,7 +16,20 @@ const listProductById = async (productId) => {
   return product;
 };
 
+const addProduct = async (productName) => {
+  const columns = Object.keys(productName).join(', ');
+  const placeholders = Object.keys(productName).map((_key) => '?').join(', ');
+
+  const [{ insertId }] = await connection.execute(
+    `INSERT INTO StoreManager.products (${columns}) VALUE (${placeholders})`,
+    [...Object.values(productName)],
+  );
+
+  return insertId;
+};
+
 module.exports = {
   listProducts,
   listProductById,
+  addProduct,
 };

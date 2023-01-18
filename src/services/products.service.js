@@ -17,7 +17,15 @@ const listProductById = async (productId) => {
   return { type: null, message: product };
 };
 
+const addProduct = async (productName) => {
+  const newProductId = await productsModel.addProduct({ name: productName });
+  const newProduct = await productsModel.listProductById(newProductId);
+
+  return { type: null, message: newProduct };
+};
+
 module.exports = {
   listProducts,
   listProductById,
+  addProduct,
 };
