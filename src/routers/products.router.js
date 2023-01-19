@@ -1,5 +1,6 @@
 const express = require('express');
 const { productsController } = require('../controllers');
+const findProductById = require('../middlewares/findProductById');
 const validateName = require('../middlewares/validateName');
 
 const router = express.Router();
@@ -24,6 +25,12 @@ router.put(
   '/:id',
   validateName,
   productsController.updateProduct,
+);
+
+router.delete(
+  '/:id',
+  findProductById,
+  productsController.deleteProduct,
 );
 
 module.exports = router;
