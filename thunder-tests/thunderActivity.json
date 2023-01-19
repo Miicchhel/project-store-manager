@@ -4,13 +4,18 @@
     "colId": "history",
     "containerId": "",
     "name": "localhost:3000/products",
-    "url": "localhost:3000/sales/2",
-    "method": "GET",
+    "url": "localhost:3000/products/2222",
+    "method": "PUT",
     "sortNum": 0,
     "created": "2023-01-18T14:14:13.314Z",
-    "modified": "2023-01-19T05:17:23.062Z",
+    "modified": "2023-01-19T07:09:37.795Z",
     "headers": [],
     "params": [],
+    "body": {
+      "type": "json",
+      "raw": "{\n  \"name\": \"Traje de encolhimento michel\"\n}",
+      "form": []
+    },
     "tests": []
   },
   {
