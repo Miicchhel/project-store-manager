@@ -1,16 +1,16 @@
 const express = require('express');
-const { salesControler } = require('../controllers');
+const { salesController } = require('../controllers');
 
 const router = express.Router();
 
 router.get(
   '/',
-  salesControler.listSales,
+  salesController.listSales,
 );
 
 router.get(
   '/:id',
-  salesControler.listSaleById,
+  salesController.listSaleById,
 );
 
 // router.post(

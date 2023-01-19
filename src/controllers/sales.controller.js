@@ -13,10 +13,10 @@ const listSaleById = async (req, res) => {
   res.status(200).json(message);
 };
 
-const addSale = () => { };
+// const addSale = () => { };
 
 module.exports = {
   listSales,
   listSaleById,
-  addSale,
+  // addSale,
 };

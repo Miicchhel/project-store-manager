@@ -23,10 +23,10 @@ const listSaleById = async (saleId) => {
   return sale;
 };
 
-const addSale = () => { };
+// const addSale = () => { };
 
 module.exports = {
   listSales,
   listSaleById,
-  addSale,
+  // addSale,
 };
